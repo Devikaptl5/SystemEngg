@@ -3,21 +3,17 @@ package application;
 import java.io.IOException;
 import java.util.Random;
 
-import java.net.URL;
-import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Arrays;
 import java.util.List;
-import java.util.UUID;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
@@ -44,13 +40,20 @@ public class PaymentController {
     
     public Text cancellationID;
     
-    private Integer selectedBus;
+    private BusDto selectedBus;
+    
+    private BusDto selectedBusDto;
     
     public String newBookId;
     
-    public List<CheckBox> selectedSeats = new ArrayList<>();
+    public List<String> selectedSeats = new ArrayList<String>();
+    public String selectedSeatsDisplayValue;
     
-    public void setSelectedBus(Integer selectedBus) {
+    public void setSelectedBusDto(BusDto bus) {
+    	selectedBusDto = bus;
+    }
+    
+    public void setSelectedBus(BusDto selectedBus) {
     	this.selectedBus = selectedBus;
     }
     
@@ -83,12 +86,6 @@ public class PaymentController {
 	     
 	      SeatSelectionController seatSelectionController = loader.<SeatSelectionController>getController();
 	      seatSelectionController.setSelectedBus(selectedBus);
-	      seatSelectionController.getSeat1().setSelected(selectedSeats.get(0).isSelected());
-	      seatSelectionController.getSeat2().setSelected(selectedSeats.get(1).isSelected());
-	      seatSelectionController.getSeat3().setSelected(selectedSeats.get(2).isSelected());
-	      seatSelectionController.getSeat4().setSelected(selectedSeats.get(3).isSelected());
-	      seatSelectionController.getSeat5().setSelected(selectedSeats.get(4).isSelected());
-	      seatSelectionController.getSeat6().setSelected(selectedSeats.get(5).isSelected());
 	      
 	      BorderPane border = Main.getRoot();
   	      border.setCenter(pane);
@@ -113,26 +110,31 @@ public class PaymentController {
     	      ConfirmedSeatBooking confirmedSeatBooking = loader.<ConfirmedSeatBooking>getController();
     	      
     	      
-    	      confirmedSeatBooking.getSelectedSeatNumber().setText(selectedSeatNumber.getText()); // gets payment information and passes on to confirmed booking.  
+    	      confirmedSeatBooking.getSelectedSeatNumber().setText(selectedSeatsDisplayValue); // gets payment information and passes on to confirmed booking.  
     	      confirmedSeatBooking.getDepartureDate().setText(departureDate.getText());
-    	      confirmedSeatBooking.setSelectedBus(selectedBus);
+    	      confirmedSeatBooking.setSelectedBus(selectedBusDto);
     	      confirmedSeatBooking.getTotalFare().setText(totalFare.getText()); 
     	      Random r = new Random();
     	      Integer num = r.nextInt(9000000) + 1000000;
+    	      String id = "BOOKID@"+num;
     	      
-    	      //BusDto bus = new BusDto(selectedBus, departureLocation.getText(), Integer.parseInt(totalFare.getText()));
+    	      System.out.println(id);
     	      
-    	      confirmedSeatBooking.getBookingId().setText("BOOKID@"+num); //generates random system id.
-    	      
-    	      Text bookid = confirmedSeatBooking.getBookingId();
-    	      String nbid = bookid.toString();
-    	      newBookId = nbid.substring(25, 39);
-    	      System.out.println(newBookId);
+    	      confirmedSeatBooking.getBookingId().setText(id); //generates random system id.
     	      
     	      Alert errorAlert = new Alert(AlertType.CONFIRMATION);
 	    	  errorAlert.setHeaderText("BOOKING ID: ");
-	    	  errorAlert.setContentText("Your BookingID is: BOOKID@"+num);
+	    	  errorAlert.setContentText("Your BookingID is: " + id);
 	    	  errorAlert.showAndWait();
+	    	  String str = selectedSeatNumber.getText();
+	    	  String idStr = str.substring(1,str.length() -1);
+	    	  
+	    	  List<String> selectedSeats = Arrays.asList(idStr.split(","));
+	    	  
+	    	  BookingDto booking = new BookingDto(selectedBus, id, selectedSeats);
+	    	  
+	    	  PersistanceData persistence = Main.getPersistData();
+	    	  persistence.addConfirmedBooking(booking);
     	      
     	      confirmedSeatBooking.getDepartureLocation().setText(departureLocation.getText());
             	      

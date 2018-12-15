@@ -14,83 +14,10 @@
       <Pane layoutX="14.0" layoutY="66.0" prefHeight="104.0" prefWidth="562.0">
          <children>
             <Label layoutX="39.0" layoutY="14.0" text="Destination" textFill="#0f4ca8" />
-            <Label layoutX="38.0" layoutY="47.0" text="Amsterdam" />
             <Label layoutX="184.0" layoutY="14.0" text="Departure Time" textFill="#0f4ca8" />
-            <Label layoutX="193.0" layoutY="40.0" text="10:00 AM" />
-            <Label layoutX="359.0" layoutY="14.0" text="Fare" textFill="#0f4ca8" />
-            <Label layoutX="359.0" layoutY="44.0" text="Eur 19" />          
+            <Label layoutX="359.0" layoutY="14.0" text="Fare" textFill="#0f4ca8" />          
          </children>
       </Pane>
-      <Button fx:id="firstBusAvailability" layoutX="579.0" layoutY="105.0" mnemonicParsing="false" onAction="#firstBusAvailabilityAction" text="Check Seat" />
-      <Pane layoutX="14.0" layoutY="164.0" prefHeight="98.0" prefWidth="555.0">
-         <children>
-            <Label layoutX="39.0" layoutY="14.0" textFill="#0f4ca8" />
-            <Label layoutX="39.0" layoutY="40.0" text="Brussels" />
-            <Label layoutX="184.0" layoutY="14.0" textFill="#0f4ca8" />
-            <Label layoutX="193.0" layoutY="40.0" text="12:00 PM" />
-            <Label layoutX="327.0" layoutY="14.0" textFill="#0f4ca8" />
-            <Label layoutX="355.0" layoutY="40.0" text="Eur 24" />
-            <Label layoutX="405.0" layoutY="14.0" textFill="#0f4ca8" />
-            <Label layoutX="405.0" layoutY="40.0" />
-         </children>
-      </Pane>
-      <Button fx:id="secondBusAvailability" layoutX="579.0" layoutY="200.0" mnemonicParsing="false" onAction="#secondBusAvailabilityAction" text="Check Seat" />
-      <Pane layoutX="14.0" layoutY="254.0" prefHeight="98.0" prefWidth="555.0">
-         <children>
-            <Label layoutX="39.0" layoutY="14.0" textFill="#0f4ca8" />
-            <Label layoutX="39.0" layoutY="40.0" prefHeight="17.0" prefWidth="38.0" text="Paris" />
-            <Label layoutX="184.0" layoutY="14.0" textFill="#0f4ca8" />
-            <Label layoutX="193.0" layoutY="41.0" text="2:00 PM" />
-            <Label layoutX="327.0" layoutY="14.0" textFill="#0f4ca8" />
-            <Label layoutX="356.0" layoutY="41.0" text="Eur 29" />
-            <Label layoutX="405.0" layoutY="14.0" textFill="#0f4ca8" />
-            <Label layoutX="405.0" layoutY="40.0" />
-         </children>
-      </Pane>
-      <Button fx:id="thirdBusAvailability" layoutX="579.0" layoutY="290.0" mnemonicParsing="false" onAction="#thirdBusAvailabilityAction" text="Check Seat" />
-      <Button fx:id="back" layoutX="312.0" layoutY="648.0" mnemonicParsing="false" onAction="#backAction" text="Back" />
-      <Pane layoutX="35.0" layoutY="356.0" prefHeight="98.0" prefWidth="505.0">
-         <children>
-            <Label layoutX="22.0" layoutY="14.0" />
-            <Label layoutX="22.0" layoutY="42.0" text="Vienna" />
-            <Label layoutX="171.0" layoutY="6.0" />
-            <Label layoutX="177.0" layoutY="41.0" text="8:00 AM" />
-            <Label layoutX="299.0" layoutY="14.0" />
-            <Label layoutX="334.0" layoutY="40.0" text="Eur 29" />
-            <Label layoutX="390.0" layoutY="14.0" />
-            <Label layoutX="390.0" layoutY="50.0" />
-            <Label layoutX="442.0" layoutY="23.0" />
-         </children>
-      </Pane>
-      <Button fx:id="forthBusAvailability" layoutX="579.0" layoutY="392.0" mnemonicParsing="false" onAction="#forthBusAvailabilityAction" text="Check Seat" />
-      <Pane layoutX="42.0" layoutY="454.0" prefHeight="104.0" prefWidth="490.0">
-         <children>
-            <Label layoutX="27.0" layoutY="14.0" />
-            <Label layoutX="14.0" layoutY="45.0" text="Budapest" />
-            <Label layoutX="174.0" layoutY="6.0" />
-            <Label layoutX="174.0" layoutY="45.0" text="3:00 PM" />
-            <Label layoutX="320.0" layoutY="6.0" />
-            <Label layoutX="326.0" layoutY="44.0" text="Eur 49" />
-            <Label layoutX="387.0" layoutY="6.0" />
-            <Label layoutX="387.0" layoutY="53.0" />
-            <Label layoutX="430.0" layoutY="6.0" />
-         </children>
-      </Pane>
-      <Button fx:id="fifthBusAvailability" layoutX="579.0" layoutY="493.0" mnemonicParsing="false" onAction="#fifthBusAvailabilityAction" text="Check Seat" />
-      <Pane layoutX="22.0" layoutY="532.0" prefHeight="104.0" prefWidth="513.0">
-         <children>
-            <Label layoutX="42.0" layoutY="24.0" />
-            <Label layoutX="42.0" layoutY="49.0" text="Prague" />
-            <Label layoutX="188.0" layoutY="24.0" />
-            <Label layoutX="188.0" layoutY="49.0" text="4:00 AM" />
-            <Label layoutX="328.0" layoutY="24.0" />
-            <Label layoutX="345.0" layoutY="49.0" text="Eur 39" />
-            <Label layoutX="404.0" layoutY="16.0" />
-            <Label layoutX="404.0" layoutY="57.0" />
-            <Label layoutX="457.0" layoutY="16.0" />
-         </children>
-      </Pane>
-      <Button fx:id="sixthBusAvailability" layoutX="579.0" layoutY="578.0" mnemonicParsing="false" onAction="#sixthBusAvailabilityAction" text="Check Seat" />
    </children>
    <opaqueInsets>
       <Insets />

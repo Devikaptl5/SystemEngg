@@ -9,16 +9,27 @@ public class BusDto {
 	
 	public String departureLocation;
 	
+	public String destination;
+	
+	public String departureTime;
+	
+	public Integer id;
+	
 	public Integer fare;
 	
 	public List<Integer> seats = new ArrayList<Integer>();
 	
-	public BusDto(String name, String departureLocation, Integer fare) {
+	public List<Integer> bookedSeats = new ArrayList<Integer>();
+	
+	public BusDto(String name, String destination, String departureTime, Integer fare, Integer id) {
 		this.name = name;
-		this.departureLocation = departureLocation;
+		this.destination = destination;
+		this.departureTime = departureTime;
 		this.fare = fare;
-		for (Integer seatNumber=1; seatNumber<= 4; seatNumber++) {
-			seats.add(seatNumber);
-		}
+		this.id = id;
+	}
+	
+	public void bookSeat(Integer seat) {
+		bookedSeats.add(seat);
 	}
 }

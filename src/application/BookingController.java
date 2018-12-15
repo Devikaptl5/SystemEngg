@@ -13,10 +13,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.stage.Window;
 
 public class BookingController {
 
@@ -37,7 +35,6 @@ public class BookingController {
     
     @FXML
     void booking(ActionEvent event) {
-    	Window owner = BookButton.getScene().getWindow();
     	
     	try {
     	      FXMLLoader loader = new FXMLLoader(
@@ -46,23 +43,9 @@ public class BookingController {
     	    		  )
     	    		);
     	      
-    	      Pane pane = loader.load();   
-    	     
-    	      BusDto bus1 = Main.getPersistData().buses.get(0);
-    	      BusDto bus2 = Main.getPersistData().buses.get(1);
-    	      BusDto bus3 = Main.getPersistData().buses.get(2);
-    	      BusDto bus4 = Main.getPersistData().buses.get(3);
-    	      BusDto bus5 = Main.getPersistData().buses.get(4);
-    	      BusDto bus6 = Main.getPersistData().buses.get(5);
-    	      
-    	      
+    	      Pane pane = loader.load();
     	      BusSelectionController busSelectionController = loader.<BusSelectionController>getController();
-    	      /*busSelectionController.getSeat1().setText(Integer.toString(bus1.seats.size()));
-    	      busSelectionController.seat2.setText(Integer.toString(bus2.seats.size()));
-    	      busSelectionController.seat3.setText(Integer.toString(bus3.seats.size()));
-    	      busSelectionController.seat4.setText(Integer.toString(bus4.seats.size()));
-    	      busSelectionController.seat5.setText(Integer.toString(bus5.seats.size()));
-    	      busSelectionController.seat6.setText(Integer.toString(bus6.seats.size()));*/
+    	      busSelectionController.populate(pane);
   	        	      
     	      BorderPane border = Main.getRoot();
     	      border.setCenter(pane);
@@ -77,7 +60,6 @@ public class BookingController {
     }
     @FXML
     void cancellingTicket(ActionEvent event) {
-    	Window owner = CancelButton.getScene().getWindow();
     	
     	try {
     	      FXMLLoader loader = new FXMLLoader(
@@ -102,7 +84,6 @@ public class BookingController {
     
     @FXML
     int close(ActionEvent event) {
-    	Window owner = CloseButton.getScene().getWindow();
  
     	System.exit(0);
     	return 0;

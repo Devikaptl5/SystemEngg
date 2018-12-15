@@ -7,28 +7,8 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SeatSelectionController">
    <children>
-      <CheckBox fx:id="seat1" graphicTextGap="0.0" layoutX="58.0" layoutY="76.0" mnemonicParsing="false" text="1A" />
-      <CheckBox fx:id="seat2" graphicTextGap="0.0" layoutX="57.0" layoutY="109.0" mnemonicParsing="false" text="3A" />
-      <CheckBox fx:id="seat3" graphicTextGap="0.0" layoutX="102.0" layoutY="109.0" mnemonicParsing="false" text="3B" />
-      <CheckBox fx:id="seat4" graphicTextGap="0.0" layoutX="102.0" layoutY="76.0" mnemonicParsing="false" text="1B" />
       <Button fx:id="confirmSeatButton" layoutX="419.0" layoutY="311.0" mnemonicParsing="false" onAction="#confirmSeatButtonAction" prefHeight="26.0" prefWidth="114.0" text="Confirm Seat" />
       <Button fx:id="backBusSelection" layoutX="47.0" layoutY="311.0" mnemonicParsing="false" onAction="#backBusSelectionAction" prefHeight="26.0" prefWidth="114.0" text="Back to Menu" />
       <Label layoutX="118.0" layoutY="22.0" prefHeight="17.0" prefWidth="176.0" text="Select Seat for Bus" />
-      <CheckBox fx:id="seat5" graphicTextGap="0.0" layoutX="58.0" layoutY="148.0" mnemonicParsing="false" text="5A" />
-      <CheckBox fx:id="seat6" graphicTextGap="0.0" layoutX="104.0" layoutY="148.0" mnemonicParsing="false" text="5B" />
-      <CheckBox fx:id="seat7" graphicTextGap="0.0" layoutX="58.0" layoutY="186.0" mnemonicParsing="false" text="7A" />
-      <CheckBox fx:id="seat8" graphicTextGap="0.0" layoutX="105.0" layoutY="186.0" mnemonicParsing="false" text="7B" />
-      <CheckBox fx:id="seat9" graphicTextGap="0.0" layoutX="57.0" layoutY="230.0" mnemonicParsing="false" text="9A" />
-      <CheckBox fx:id="seat10" graphicTextGap="0.0" layoutX="104.0" layoutY="230.0" mnemonicParsing="false" text="9B" />
-      <CheckBox fx:id="seat11" graphicTextGap="0.0" layoutX="300.0" layoutY="230.0" mnemonicParsing="false" text="10B" />
-      <CheckBox fx:id="seat12" graphicTextGap="0.0" layoutX="247.0" layoutY="230.0" mnemonicParsing="false" text="10A" />
-      <CheckBox fx:id="seat13" graphicTextGap="0.0" layoutX="303.0" layoutY="186.0" mnemonicParsing="false" text="8B" />
-      <CheckBox fx:id="seat14" graphicTextGap="0.0" layoutX="247.0" layoutY="186.0" mnemonicParsing="false" text="8A" />
-      <CheckBox fx:id="seat15" graphicTextGap="0.0" layoutX="303.0" layoutY="148.0" mnemonicParsing="false" text="6B" />
-      <CheckBox fx:id="seat16" graphicTextGap="0.0" layoutX="247.0" layoutY="148.0" mnemonicParsing="false" text="6A" />
-      <CheckBox fx:id="seat17" graphicTextGap="0.0" layoutX="303.0" layoutY="109.0" mnemonicParsing="false" text="4B" />
-      <CheckBox fx:id="seat18" graphicTextGap="0.0" layoutX="247.0" layoutY="109.0" mnemonicParsing="false" text="4A" />
-      <CheckBox fx:id="seat19" graphicTextGap="0.0" layoutX="303.0" layoutY="76.0" mnemonicParsing="false" text="2B" />
-      <CheckBox fx:id="seat20" graphicTextGap="0.0" layoutX="247.0" layoutY="76.0" mnemonicParsing="false" text="2A" />
    </children>
 </AnchorPane>

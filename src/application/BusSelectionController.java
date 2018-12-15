@@ -1,235 +1,127 @@
 package application;
 
-import java.awt.Label;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.text.Text;
 
 public class BusSelectionController {
 
-    @FXML
-    private Button thirdBusAvailability;
+	private List<Pane> buses = new ArrayList<Pane>();
 
-    @FXML
-    private Button secondBusAvailability;
+	@FXML
+	private Button back;
 
-    @FXML
-    private Button firstBusAvailability;
-    
-    @FXML
-    private Button forthBusAvailability;
-    
-    @FXML
-    private Button fifthBusAvailability;
-    
-    @FXML
-    private Button sixthBusAvailability;
-    
-    @FXML
-    private Button back;
-    
-    @FXML
-    private Text seat1;
-    
-    @FXML
-    public Text seat3;
-    
-    @FXML
-    public Text seat2;
+	@FXML
+	void backAction(ActionEvent event) {
+		try {
 
-    @FXML
-    public Text seat4;
-    
-    @FXML
-    public Text seat5;
-    
-    @FXML
-    public Text seat6;
-    
-    public Text getSeat1() {
-    	return seat1;
-    }
-    
-    public Text getSeat2() {
-    	return seat2;
-    }
-    
-    public Text getSeat3() {
-    	return seat3;
-    }
-    
-    public Text getSeat4() {
-    	return seat4;
-    }
-    
-    public Text getSeat5() {
-    	return seat5;
-    }
-    
-    public Text getSeat6() {
-    	return seat6;
-    }
-    
-    @FXML
-    void firstBusAvailabilityAction(ActionEvent event) {
-    	
-    	try {      
-    	      FXMLLoader loader = new FXMLLoader(
-    	    		  getClass().getResource(
-    	    			"SeatSelection.fxml"
-    	    		  )
-    	    		);
-    	      
-    	      Pane pane = loader.load();   //loads the complete page and adds/place it to main root 
-    	     
-    	      SeatSelectionController seatSelectionController = loader.<SeatSelectionController>getController();
-    	      seatSelectionController.setSelectedBus(0);  //selecting bus number 1
-    	      
-    	      BorderPane border = Main.getRoot();
-    	      border.setCenter(pane);
-    	      
-    	    } catch (IOException e) {
-    	      e.printStackTrace();
-    	    }
+			URL paneOneUrl = getClass().getResource("Home.fxml");
+			AnchorPane paneOne = FXMLLoader.load(paneOneUrl);
 
-    }
+			BorderPane border = Main.getRoot();
+			border.setCenter(paneOne);
 
-    @FXML
-    void secondBusAvailabilityAction(ActionEvent event) {
-    	try {      
-    		FXMLLoader loader = new FXMLLoader(
-  	    		  getClass().getResource(
-  	    			"SeatSelection.fxml"
-  	    		  )
-  	    		);
-  	      
-  	      Pane pane = loader.load();   
-  	     
-  	      SeatSelectionController seatSelectionController = loader.<SeatSelectionController>getController();
-  	      seatSelectionController.setSelectedBus(1); //selecting bus number 2
-  	      
-  	      BorderPane border = Main.getRoot();
-  	      border.setCenter(pane);
-  	      
-  	    } catch (IOException e) {
-  	      e.printStackTrace();
-  	    }
-    }
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
-    @FXML
-    void thirdBusAvailabilityAction(ActionEvent event) {
-    	try {      
-    		FXMLLoader loader = new FXMLLoader(
-  	    		  getClass().getResource(
-  	    			"SeatSelection.fxml"
-  	    		  )
-  	    		);
-  	      
-  	      Pane pane = loader.load();   
-  	     
-  	      SeatSelectionController seatSelectionController = loader.<SeatSelectionController>getController();
-  	      seatSelectionController.setSelectedBus(2);  //selecting bus number 3
-  	      
-  	      BorderPane border = Main.getRoot();
-  	      border.setCenter(pane);
-  	      
-  	    } catch (IOException e) {
-  	      e.printStackTrace();
-  	    }
-    }
-    
-    @FXML
-    void forthBusAvailabilityAction(ActionEvent event) {
-    	
-    	try {      
-    	      FXMLLoader loader = new FXMLLoader(
-    	    		  getClass().getResource(
-    	    			"SeatSelection.fxml"
-    	    		  )
-    	    		);
-    	      
-    	      Pane pane = loader.load();   //loads the complete page and adds/place it to main root 
-    	     
-    	      SeatSelectionController seatSelectionController = loader.<SeatSelectionController>getController();
-    	      seatSelectionController.setSelectedBus(3);  //selecting bus number 1
-    	      
-    	      BorderPane border = Main.getRoot();
-    	      border.setCenter(pane);
-    	      
-    	    } catch (IOException e) {
-    	      e.printStackTrace();
-    	    }
+	private Pane createPane(long layoutY) {
+		long layoutX = 14, prefHeight = 105, prefWidth = 562;
+		Pane p = new Pane();
+		p.setLayoutX(layoutX);
+		p.setLayoutY(layoutY);
+		p.setPrefHeight(prefHeight);
+		p.setPrefWidth(prefWidth);
 
-    }
-    
-    @FXML
-    void fifthBusAvailabilityAction(ActionEvent event) {
-    	
-    	try {      
-    	      FXMLLoader loader = new FXMLLoader(
-    	    		  getClass().getResource(
-    	    			"SeatSelection.fxml"
-    	    		  )
-    	    		);
-    	      
-    	      Pane pane = loader.load();   //loads the complete page and adds/place it to main root 
-    	     
-    	      SeatSelectionController seatSelectionController = loader.<SeatSelectionController>getController();
-    	      seatSelectionController.setSelectedBus(4);  //selecting bus number 1
-    	      
-    	      BorderPane border = Main.getRoot();
-    	      border.setCenter(pane);
-    	      
-    	    } catch (IOException e) {
-    	      e.printStackTrace();
-    	    }
+		return p;
+	}
 
-    }
-    
-    @FXML
-    void sixthBusAvailabilityAction(ActionEvent event) {
-    	
-    	try {      
-    	      FXMLLoader loader = new FXMLLoader(
-    	    		  getClass().getResource(
-    	    			"SeatSelection.fxml"
-    	    		  )
-    	    		);
-    	      
-    	      Pane pane = loader.load();   //loads the complete page and adds/place it to main root 
-    	     
-    	      SeatSelectionController seatSelectionController = loader.<SeatSelectionController>getController();
-    	      seatSelectionController.setSelectedBus(5);  //selecting bus number 1
-    	      
-    	      BorderPane border = Main.getRoot();
-    	      border.setCenter(pane);
-    	      
-    	    } catch (IOException e) {
-    	      e.printStackTrace();
-    	    }
+	private void handleBusSelection(ActionEvent event) {
+		Button button = (Button) event.getTarget();
+		String elId = button.getId();
+		Integer id = Integer.parseInt(elId.split("::")[1]);
+		System.out.println(id);
 
-    }
-    
-    @FXML
-    void backAction(ActionEvent event) {
-    	try {
-  	      
-  	      URL paneOneUrl = getClass().getResource("Home.fxml");
-  	      AnchorPane paneOne = FXMLLoader.load( paneOneUrl );
-  	      
-  	      BorderPane border = Main.getRoot();
-  	      border.setCenter(paneOne);
-  	      
-  	    } catch (IOException e) {
-  	      e.printStackTrace();
-  	    }
-    }
+		BusDto selectedBus = Main.getPersistData().findBus(id);
+		if (selectedBus != null) {
+			try {
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("SeatSelection.fxml"));
+
+				Pane pane = loader.load(); // loads the complete page and adds/place it to main root
+
+				SeatSelectionController seatSelectionController = loader.<SeatSelectionController>getController();
+				seatSelectionController.setSelectedBus(selectedBus); // selecting bus number 1
+				seatSelectionController.populate(pane);
+
+				BorderPane border = Main.getRoot();
+				border.setCenter(pane);
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		}
+
+	}
+
+	private List<Label> createPaneLabels(BusDto bus) {
+		List<Label> labels = new ArrayList<Label>();
+
+		Label destination = new Label();
+		destination.setText(bus.destination);
+		destination.setLayoutX(39L);
+		destination.setLayoutY(40L);
+		labels.add(destination);
+
+		Label departureTime = new Label();
+		departureTime.setText(bus.departureTime);
+		departureTime.setLayoutX(193L);
+		departureTime.setLayoutY(40L);
+		labels.add(departureTime);
+
+		Label fare = new Label();
+		fare.setText("" + bus.fare);
+		fare.setLayoutX(359L);
+		fare.setLayoutY(40L);
+		labels.add(fare);
+
+		return labels;
+	}
+
+	private Button createSelectButton(BusDto dto) {
+		Button select = new Button();
+		select.setText("Check Availability");
+		select.setId(dto.name + "::" + dto.id);
+		select.setLayoutX(539L);
+		select.setLayoutY(35L);
+
+		select.addEventHandler(ActionEvent.ACTION, event -> {
+			this.handleBusSelection(event);
+		});
+
+		return select;
+	}
+
+	public void populate(Pane pane) {
+		long layoutY = 66, layoutYOffset = 98;
+		for (BusDto bus : Main.getPersistData().buses) {
+			Pane p = createPane(layoutY);
+			p.getChildren().addAll(createPaneLabels(bus));
+			p.getChildren().add(createSelectButton(bus));
+			buses.add(p);
+			layoutY += layoutYOffset;
+		}
+		pane.getChildren().addAll(buses);
+	}
 }

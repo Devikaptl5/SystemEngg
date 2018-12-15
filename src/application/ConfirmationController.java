@@ -8,9 +8,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.stage.Window;
 
-public class Confirmation {
+public class ConfirmationController {
+	
+	public BookingDto booking;
 
 	@FXML // fx:id="BookButton"
 	private Button okButton;
@@ -18,7 +19,8 @@ public class Confirmation {
 	@FXML
 	void home(ActionEvent event) {
 		// TODO Auto-generated constructor stub
-		Window owner = okButton.getScene().getWindow();
+		
+		Main.getPersistData().cancelBooking(booking);
     	
     	try {
     	      FXMLLoader loader = new FXMLLoader(
