@@ -39,14 +39,15 @@ public class BookingController {
     	try {
     	      FXMLLoader loader = new FXMLLoader(
     	    		  getClass().getResource(
-    	    		    "BusSelection.fxml"
+    	    		    "CitySelection.fxml"
     	    		  )
     	    		);
+    	      System.out.println("New page");
     	      
     	      Pane pane = loader.load();
-    	      BusSelectionController busSelectionController = loader.<BusSelectionController>getController();
-    	      busSelectionController.populate(pane);
-  	        	      
+    	      CitySelectionController citySelectionController = loader.<CitySelectionController>getController();
+    	      citySelectionController.populate(pane);
+    	      
     	      BorderPane border = Main.getRoot();
     	      border.setCenter(pane);
     	      

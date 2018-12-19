@@ -13,7 +13,6 @@
       <Insets />
    </opaqueInsets>
    <children>
-      
       <Button fx:id="ConfirmButton" layoutX="232.0" layoutY="234.0" mnemonicParsing="false" onAction="#ccancel" text="CONFIRM" />
       <Label layoutX="126.0" layoutY="154.0" text="Enter booking ID: " />
       <TextField fx:id="tf" layoutX="256.0" layoutY="149.0" />

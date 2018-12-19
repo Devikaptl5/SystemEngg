@@ -13,11 +13,12 @@
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="95.0" layoutY="23.0" prefHeight="35.0" prefWidth="483.0" text="FLIXBUS " />
       <Pane layoutX="14.0" layoutY="66.0" prefHeight="104.0" prefWidth="562.0">
          <children>
-            <Label layoutX="39.0" layoutY="14.0" text="Destination" textFill="#0f4ca8" />
+            <!-- <Label layoutX="39.0" layoutY="14.0" text="Destination" textFill="#0f4ca8" />-->
             <Label layoutX="184.0" layoutY="14.0" text="Departure Time" textFill="#0f4ca8" />
             <Label layoutX="359.0" layoutY="14.0" text="Fare" textFill="#0f4ca8" />          
          </children>
       </Pane>
+      <Button layoutX="266.0" layoutY="660.0" mnemonicParsing="false" onAction="#backAction" text="BACK" />
    </children>
    <opaqueInsets>
       <Insets />

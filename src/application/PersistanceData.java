@@ -6,17 +6,39 @@ import java.util.List;
 public class PersistanceData {
 
 	public List<BusDto> buses = new ArrayList<>(); // bus data is stored in array
+	public List<CityDto> cities = new ArrayList<>();
 	private List<BookingDto> confirmedBookings = new ArrayList<BookingDto>();
 
 	public List<BookedSeat> bookedSeat = new ArrayList<>();
 
 	public PersistanceData() {
-		buses.add(new BusDto("Amsterdam - Bus", "Amsterdam", "11:00", 19, 1));
-		buses.add(new BusDto("Brussels - Bus", "Brussels", "11:00", 24, 2));
-		buses.add(new BusDto("Paris - Bus", "Paris", "11:00", 29, 3));
-		buses.add(new BusDto("Vienna - Bus", "Vienna", "11:00", 29, 4));
-		buses.add(new BusDto("Budapest - Bus", "Budapest", "11:00", 49, 5));
-		buses.add(new BusDto("Prague - Bus", "Prague", "11:00", 39, 6));
+		
+		buses.add(new BusDto("Amsterdam - Bus", "Amsterdam", "21:00", 19, 1, 1));
+		//buses.add(new BusDto("Amsterdam - Bus", "Amsterdam", "21:00", 19, 1, 2));
+		//buses.add(new BusDto("Amsterdam - Bus", "Amsterdam", "21:00", 19, 1, 3));
+		buses.add(new BusDto("Brussels - Bus", "Brussels", "19:00", 24, 2, 2));
+		//buses.add(new BusDto("Brussels - Bus", "Brussels", "19:00", 24, 2, 2));
+		//buses.add(new BusDto("Brussels - Bus", "Brussels", "19:00", 24, 2, 3));
+		
+		cities.add(new CityDto("Amsterdam",1));
+		cities.add(new CityDto("Brussels",2));
+		
+		/*buses.add(new BusDto("Paris - Bus", "Paris", "20:00", 29, 3, 1));
+		buses.add(new BusDto("Paris - Bus", "Paris", "20:00", 29, 3, 2));
+		buses.add(new BusDto("Paris - Bus", "Paris", "20:00", 29, 3, 3));
+		
+		buses.add(new BusDto("Vienna - Bus", "Vienna", "03:00", 29, 4, 1));
+		buses.add(new BusDto("Vienna - Bus", "Vienna", "03:00", 29, 4, 2));
+		buses.add(new BusDto("Vienna - Bus", "Vienna", "03:00", 29, 4, 3));
+		
+		buses.add(new BusDto("Budapest - Bus", "Budapest", "02:00", 49, 5, 1));
+		buses.add(new BusDto("Budapest - Bus", "Budapest", "02:00", 49, 5, 2));
+		buses.add(new BusDto("Budapest - Bus", "Budapest", "02:00", 49, 5, 3));
+		
+		buses.add(new BusDto("Prague - Bus", "Prague", "05:00", 39, 6, 1));
+		buses.add(new BusDto("Prague - Bus", "Prague", "05:00", 39, 6, 2));
+		buses.add(new BusDto("Prague - Bus", "Prague", "05:00", 39, 6, 3));*/
+		
 	}
 
 	public List<BookingDto> getConfirmedBookings() {
@@ -34,6 +56,7 @@ public class PersistanceData {
 				return bus;
 			}
 		}
+		System.out.println("Selected bus: " + selectedBus);
 		return selectedBus;
 	}
 
@@ -77,6 +100,7 @@ public class PersistanceData {
 				occupiedSeats.add(seat);
 			}
 		}
+		System.out.println(occupiedSeats);
 		return occupiedSeats;
 	}
 

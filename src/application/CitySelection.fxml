@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="777.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.CitySelectionController">
+   <children>
+      <Label alignment="CENTER" layoutX="166.0" layoutY="35.0" prefHeight="17.0" prefWidth="270.0" text="Cities reachable" textAlignment="CENTER" />
+      <Pane layoutX="55.0" layoutY="79.0" prefHeight="576.0" prefWidth="491.0">
+         <children>
+            <Label layoutX="51.0" layoutY="14.0" text="Cities" textFill="#0f4ca8" />
+         </children>
+      </Pane>
+      <Button layoutX="284.0" layoutY="679.0" mnemonicParsing="false" onAction="#backAction" text="Back" />
+   </children>
+</AnchorPane>

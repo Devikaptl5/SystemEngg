@@ -15,18 +15,21 @@ public class BusDto {
 	
 	public Integer id;
 	
+	public Integer bid;
+	
 	public Integer fare;
 	
 	public List<Integer> seats = new ArrayList<Integer>();
 	
 	public List<Integer> bookedSeats = new ArrayList<Integer>();
 	
-	public BusDto(String name, String destination, String departureTime, Integer fare, Integer id) {
+	public BusDto(String name, String destination, String departureTime, Integer fare, Integer id, Integer bid) {
 		this.name = name;
 		this.destination = destination;
 		this.departureTime = departureTime;
 		this.fare = fare;
 		this.id = id;
+		this.bid = bid;
 	}
 	
 	public void bookSeat(Integer seat) {

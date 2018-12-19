@@ -8,15 +8,17 @@ import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
-public class BusSelectionController {
+public class CitySelectionController {
 
 	private List<Pane> buses = new ArrayList<Pane>();
+	private List<Pane> cities = new ArrayList<Pane>();
 
 	@FXML
 	private Button back;
@@ -25,7 +27,7 @@ public class BusSelectionController {
 	void backAction(ActionEvent event) {
 		try {
 
-			URL paneOneUrl = getClass().getResource("CitySelection.fxml");
+			URL paneOneUrl = getClass().getResource("Home.fxml");
 			AnchorPane paneOne = FXMLLoader.load(paneOneUrl);
 
 			BorderPane border = Main.getRoot();
@@ -47,45 +49,45 @@ public class BusSelectionController {
 		return p;
 	}
 
-	private void handleBusSelection(ActionEvent event) {
+	private void handleBusSelection(ActionEvent event) throws IOException {
 		Button button = (Button) event.getTarget();
+		
 		String elId = button.getId();
 		System.out.println(elId);
 		Integer id = Integer.parseInt(elId.split("::")[1]);
-		System.out.println("You selected bus" + id);
+		System.out.println("You selected city : " + id);
 
 		BusDto selectedBus = Main.getPersistData().findBus(id);
+		
+		System.out.println(selectedBus);
 		if (selectedBus != null) {
-			try {
-				FXMLLoader loader = new FXMLLoader(getClass().getResource("SeatSelection.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("BusSelection.fxml"));
+			
+			BusSelectionController busSelectionController = loader.<BusSelectionController>getController();
+			//busSelectionController.setSelectedBus(selectedBus); // selecting bus number 1
+			
+			Pane pane = loader.load();
+			busSelectionController.populate(pane);
 
-				Pane pane = loader.load(); // loads the complete page and adds/place it to main root
-
-				SeatSelectionController seatSelectionController = loader.<SeatSelectionController>getController();
-				seatSelectionController.setSelectedBus(selectedBus); // selecting bus number 1
-				seatSelectionController.populate(pane);
-
-				BorderPane border = Main.getRoot();
-				border.setCenter(pane);
-
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-
+			BorderPane border = Main.getRoot();
+			border.setCenter(pane);
+			
 		}
-
+		
+	
 	}
+    		
 
-	private List<Label> createPaneLabels(BusDto bus) {
+	private List<Label> createPaneLabels(CityDto city) {
 		List<Label> labels = new ArrayList<Label>();
 
 		Label destination = new Label();
-		destination.setText(bus.destination);
+		destination.setText(city.cname);
 		destination.setLayoutX(39L);
 		destination.setLayoutY(40L);
 		labels.add(destination);
 
-		Label departureTime = new Label();
+		/*Label departureTime = new Label();
 		departureTime.setText(bus.departureTime);
 		departureTime.setLayoutX(193L);
 		departureTime.setLayoutY(40L);
@@ -95,34 +97,40 @@ public class BusSelectionController {
 		fare.setText("" + bus.fare);
 		fare.setLayoutX(359L);
 		fare.setLayoutY(40L);
-		labels.add(fare);
+		labels.add(fare);*/
 
 		return labels;
 	}
 
-	private Button createSelectButton(BusDto dto) {
+	private Button createSelectButton(CityDto cto) {
 		Button select = new Button();
 		select.setText("Check Availability");
-		select.setId(dto.name + "::" + dto.id);
+		
+		select.setId(cto.cname + "::" + cto.cid);
 		select.setLayoutX(539L);
 		select.setLayoutY(35L);
 
 		select.addEventHandler(ActionEvent.ACTION, event -> {
-			this.handleBusSelection(event);
+			try {
+				this.handleBusSelection(event);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		});
-
+        System.out.println("Select : " + select);
 		return select;
 	}
 
 	public void populate(Pane pane) {
 		long layoutY = 66, layoutYOffset = 98;
-		for (BusDto bus : Main.getPersistData().buses) {
+		for (CityDto city : Main.getPersistData().cities) {
 			Pane p = createPane(layoutY);
-			p.getChildren().addAll(createPaneLabels(bus));
-			p.getChildren().add(createSelectButton(bus));
-			buses.add(p);
+			p.getChildren().addAll(createPaneLabels(city));
+			p.getChildren().add(createSelectButton(city));
+			cities.add(p);
 			layoutY += layoutYOffset;
 		}
-		pane.getChildren().addAll(buses);
+		pane.getChildren().addAll(cities);
 	}
 }

@@ -31,7 +31,7 @@ public class SeatSelectionController {
 	private int totalSeats = 10;
 	private String[] seatMarkers = { "A", "B" };
 
-	private List<CheckBox> seats = new ArrayList<CheckBox>();
+	public List<CheckBox> seats = new ArrayList<CheckBox>();
 
 	private BusDto selectedBus;
 
@@ -93,25 +93,36 @@ public class SeatSelectionController {
 	@FXML
 	void backBusSelectionAction(ActionEvent event) {
 		try {
-
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("BusSelection.fxml"));
-
-			Pane pane = loader.load();
-
-			BorderPane border = Main.getRoot();
-			border.setCenter(pane);
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+  	      FXMLLoader loader = new FXMLLoader(
+  	    		  getClass().getResource(
+  	    		    "BusSelection.fxml"
+  	    		  )
+  	    		);
+  	      
+  	      Pane pane = loader.load();
+  	      BusSelectionController busSelectionController = loader.<BusSelectionController>getController();
+  	      busSelectionController.populate(pane);
+	        	      
+  	      BorderPane border = Main.getRoot();
+  	      border.setCenter(pane);
+  	      
+  	    } catch (IOException e) {
+  	      e.printStackTrace();
+  	    }
 	}
-
+	
+	
 	public void populate(Pane pane) {
 		long yOffset = 41, yPosition = 75, leftColumnXOffset = 58, rightColumnXOffset = 247, xOffset = 56, side,
 				col = yPosition;
 		List<String> occupiedSeats = Main.getPersistData().findOccupiedSeats(selectedBus.id);
+		System.out.println(occupiedSeats);
+		
+		
 		for (int i = 1; i <= totalSeats; i++) {
+			
 			side = i < 6 ? leftColumnXOffset : rightColumnXOffset;
+			
 			col = i == 6 ? yPosition : col;
 			for (String marker : seatMarkers) {
 				String id = i + marker;
@@ -121,12 +132,22 @@ public class SeatSelectionController {
 
 				cb.setLayoutY(col);
 				col = marker.equals("B") ? col + yOffset : col;
-				if(occupiedSeats.contains(id)) {
-					cb.setDisable(true);
+				
+				for(int j=0; j<occupiedSeats.size(); j++)
+				{
+					System.out.println(occupiedSeats.get(j));
+					if(occupiedSeats.get(j).contains(id)) {
+						
+						cb.setDisable(true);
+						System.out.println(cb);
+						
+					}
+					
 				}
-
+				
 				seats.add(cb);
 			}
+			
 		}
 
 		pane.getChildren().addAll(seats);
