@@ -55,25 +55,32 @@ public class CitySelectionController {
 		String elId = button.getId();
 		System.out.println(elId);
 		Integer id = Integer.parseInt(elId.split("::")[1]);
-		System.out.println("You selected city : " + id);
+		String sname = elId.split("::")[0];
+		System.out.println("You selected city : " + id + " " + sname);
+       
+        	BusDto selectedBus = Main.getPersistData().findBus(id);
+    		
+    		System.out.println(selectedBus);
+    		if (selectedBus.destination.matches(sname) && selectedBus.id==id /*&& selectedBus != null*/) {
+    			try {
 
-		BusDto selectedBus = Main.getPersistData().findBus(id);
-		
-		System.out.println(selectedBus);
-		if (selectedBus != null) {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("BusSelection.fxml"));
-			
-			BusSelectionController busSelectionController = loader.<BusSelectionController>getController();
-			//busSelectionController.setSelectedBus(selectedBus); // selecting bus number 1
-			
-			Pane pane = loader.load();
-			busSelectionController.populate(pane);
+    				FXMLLoader loader = new FXMLLoader(getClass().getResource("BusSelection.fxml"));
 
-			BorderPane border = Main.getRoot();
-			border.setCenter(pane);
-			
-		}
-		
+    				Pane pane = loader.load(); // loads the complete page and adds/place it to main root
+
+    				BusSelectionController busSelectionController = loader.<BusSelectionController>getController();
+    				busSelectionController.setSelectedBus(selectedBus); // selecting bus number 1
+    				busSelectionController.populate(pane);
+
+    				BorderPane border = Main.getRoot();
+    				border.setCenter(pane);
+
+
+    			} catch (IOException e) {
+    				e.printStackTrace();
+    			}
+    			
+    		}
 	
 	}
     		
@@ -114,14 +121,13 @@ public class CitySelectionController {
 			try {
 				this.handleBusSelection(event);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		});
         System.out.println("Select : " + select);
 		return select;
 	}
-
+	
 	public void populate(Pane pane) {
 		long layoutY = 66, layoutYOffset = 98;
 		for (CityDto city : Main.getPersistData().cities) {

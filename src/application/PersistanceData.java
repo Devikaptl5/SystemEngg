@@ -14,14 +14,15 @@ public class PersistanceData {
 	public PersistanceData() {
 		
 		buses.add(new BusDto("Amsterdam - Bus", "Amsterdam", "21:00", 19, 1, 1));
-		//buses.add(new BusDto("Amsterdam - Bus", "Amsterdam", "21:00", 19, 1, 2));
-		//buses.add(new BusDto("Amsterdam - Bus", "Amsterdam", "21:00", 19, 1, 3));
-		buses.add(new BusDto("Brussels - Bus", "Brussels", "19:00", 24, 2, 2));
-		//buses.add(new BusDto("Brussels - Bus", "Brussels", "19:00", 24, 2, 2));
-		//buses.add(new BusDto("Brussels - Bus", "Brussels", "19:00", 24, 2, 3));
+		buses.add(new BusDto("Amsterdam - Bus", "Amsterdam", "21:00", 19, 1, 2));
+		buses.add(new BusDto("Amsterdam - Bus", "Amsterdam", "21:00", 19, 1, 3));
+		buses.add(new BusDto("Brussels - Bus", "Brussels", "19:00", 24, 2, 4));
+		buses.add(new BusDto("Brussels - Bus", "Brussels", "19:00", 24, 2, 5));
+		buses.add(new BusDto("Brussels - Bus", "Brussels", "19:00", 24, 2, 6));
 		
 		cities.add(new CityDto("Amsterdam",1));
 		cities.add(new CityDto("Brussels",2));
+		
 		
 		/*buses.add(new BusDto("Paris - Bus", "Paris", "20:00", 29, 3, 1));
 		buses.add(new BusDto("Paris - Bus", "Paris", "20:00", 29, 3, 2));

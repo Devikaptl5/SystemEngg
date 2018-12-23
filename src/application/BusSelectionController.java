@@ -21,15 +21,28 @@ public class BusSelectionController {
 	@FXML
 	private Button back;
 
+	private BusDto selectedBus;
+	
+	public void setSelectedBus(BusDto selectedBus) {
+		this.selectedBus = selectedBus;
+	}
+	
 	@FXML
 	void backAction(ActionEvent event) {
 		try {
-
-			URL paneOneUrl = getClass().getResource("CitySelection.fxml");
-			AnchorPane paneOne = FXMLLoader.load(paneOneUrl);
-
-			BorderPane border = Main.getRoot();
-			border.setCenter(paneOne);
+			
+			FXMLLoader loader = new FXMLLoader(
+	  	    		  getClass().getResource(
+	  	    		    "CitySelection.fxml"
+	  	    		  )
+	  	    		);
+	  	      
+	  	      Pane pane = loader.load();
+	  	      CitySelectionController citySelectionController = loader.<CitySelectionController>getController();
+	  	      citySelectionController.populate(pane);
+		        	      
+	  	      BorderPane border = Main.getRoot();
+	  	      border.setCenter(pane);
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -103,7 +116,7 @@ public class BusSelectionController {
 	private Button createSelectButton(BusDto dto) {
 		Button select = new Button();
 		select.setText("Check Availability");
-		select.setId(dto.name + "::" + dto.id);
+		select.setId(dto.name + "::" + dto.bid);
 		select.setLayoutX(539L);
 		select.setLayoutY(35L);
 
