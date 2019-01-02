@@ -21,28 +21,24 @@ public class BusSelectionController {
 	@FXML
 	private Button back;
 
-	private BusDto selectedBus;
-	
-	public void setSelectedBus(BusDto selectedBus) {
-		this.selectedBus = selectedBus;
+	private CityDto selectedCity;
+
+	public void setSelectedCity(CityDto selectedCity) {
+		this.selectedCity = selectedCity;
 	}
-	
+
 	@FXML
 	void backAction(ActionEvent event) {
 		try {
-			
-			FXMLLoader loader = new FXMLLoader(
-	  	    		  getClass().getResource(
-	  	    		    "CitySelection.fxml"
-	  	    		  )
-	  	    		);
-	  	      
-	  	      Pane pane = loader.load();
-	  	      CitySelectionController citySelectionController = loader.<CitySelectionController>getController();
-	  	      citySelectionController.populate(pane);
-		        	      
-	  	      BorderPane border = Main.getRoot();
-	  	      border.setCenter(pane);
+
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("CitySelection.fxml"));
+
+			Pane pane = loader.load();
+			CitySelectionController citySelectionController = loader.<CitySelectionController>getController();
+			citySelectionController.populate(pane);
+
+			BorderPane border = Main.getRoot();
+			border.setCenter(pane);
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -129,7 +125,8 @@ public class BusSelectionController {
 
 	public void populate(Pane pane) {
 		long layoutY = 66, layoutYOffset = 98;
-		for (BusDto bus : Main.getPersistData().buses) {
+		List<BusDto> busesForCities = Main.getPersistData().findBusesForCity(selectedCity);
+		for (BusDto bus : busesForCities) {
 			Pane p = createPane(layoutY);
 			p.getChildren().addAll(createPaneLabels(bus));
 			p.getChildren().add(createSelectButton(bus));

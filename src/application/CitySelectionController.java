@@ -51,39 +51,27 @@ public class CitySelectionController {
 
 	private void handleBusSelection(ActionEvent event) throws IOException {
 		Button button = (Button) event.getTarget();
-		
+
 		String elId = button.getId();
 		System.out.println(elId);
 		Integer id = Integer.parseInt(elId.split("::")[1]);
 		String sname = elId.split("::")[0];
 		System.out.println("You selected city : " + id + " " + sname);
-       
-        	BusDto selectedBus = Main.getPersistData().findBus(id);
-    		
-    		System.out.println(selectedBus);
-    		if (selectedBus.destination.matches(sname) && selectedBus.id==id /*&& selectedBus != null*/) {
-    			try {
 
-    				FXMLLoader loader = new FXMLLoader(getClass().getResource("BusSelection.fxml"));
+		CityDto selectedCity = Main.getPersistData().findCityById(id);
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("BusSelection.fxml"));
 
-    				Pane pane = loader.load(); // loads the complete page and adds/place it to main root
+		Pane pane = loader.load(); // loads the complete page and adds/place it to main root
 
-    				BusSelectionController busSelectionController = loader.<BusSelectionController>getController();
-    				busSelectionController.setSelectedBus(selectedBus); // selecting bus number 1
-    				busSelectionController.populate(pane);
+		BusSelectionController busSelectionController = loader.<BusSelectionController>getController();
+		busSelectionController.setSelectedCity(selectedCity);
+		busSelectionController.populate(pane);
 
-    				BorderPane border = Main.getRoot();
-    				border.setCenter(pane);
+		BorderPane border = Main.getRoot();
+		border.setCenter(pane);
 
-
-    			} catch (IOException e) {
-    				e.printStackTrace();
-    			}
-    			
-    		}
-	
 	}
-    		
+
 
 	private List<Label> createPaneLabels(CityDto city) {
 		List<Label> labels = new ArrayList<Label>();
@@ -112,7 +100,7 @@ public class CitySelectionController {
 	private Button createSelectButton(CityDto cto) {
 		Button select = new Button();
 		select.setText("Check Availability");
-		
+
 		select.setId(cto.cname + "::" + cto.cid);
 		select.setLayoutX(539L);
 		select.setLayoutY(35L);
@@ -124,10 +112,10 @@ public class CitySelectionController {
 				e.printStackTrace();
 			}
 		});
-        System.out.println("Select : " + select);
+		System.out.println("Select : " + select);
 		return select;
 	}
-	
+
 	public void populate(Pane pane) {
 		long layoutY = 66, layoutYOffset = 98;
 		for (CityDto city : Main.getPersistData().cities) {

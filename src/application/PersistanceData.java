@@ -16,15 +16,12 @@ public class PersistanceData {
 		buses.add(new BusDto("Amsterdam - Bus", "Amsterdam", "21:00", 19, 1, 1));
 		buses.add(new BusDto("Amsterdam - Bus", "Amsterdam", "21:00", 19, 1, 2));
 		buses.add(new BusDto("Amsterdam - Bus", "Amsterdam", "21:00", 19, 1, 3));
+		
 		buses.add(new BusDto("Brussels - Bus", "Brussels", "19:00", 24, 2, 4));
 		buses.add(new BusDto("Brussels - Bus", "Brussels", "19:00", 24, 2, 5));
 		buses.add(new BusDto("Brussels - Bus", "Brussels", "19:00", 24, 2, 6));
 		
-		cities.add(new CityDto("Amsterdam",1));
-		cities.add(new CityDto("Brussels",2));
-		
-		
-		/*buses.add(new BusDto("Paris - Bus", "Paris", "20:00", 29, 3, 1));
+		buses.add(new BusDto("Paris - Bus", "Paris", "20:00", 29, 3, 1));
 		buses.add(new BusDto("Paris - Bus", "Paris", "20:00", 29, 3, 2));
 		buses.add(new BusDto("Paris - Bus", "Paris", "20:00", 29, 3, 3));
 		
@@ -38,7 +35,14 @@ public class PersistanceData {
 		
 		buses.add(new BusDto("Prague - Bus", "Prague", "05:00", 39, 6, 1));
 		buses.add(new BusDto("Prague - Bus", "Prague", "05:00", 39, 6, 2));
-		buses.add(new BusDto("Prague - Bus", "Prague", "05:00", 39, 6, 3));*/
+		buses.add(new BusDto("Prague - Bus", "Prague", "05:00", 39, 6, 3));
+		
+		cities.add(new CityDto("Amsterdam",1));
+		cities.add(new CityDto("Brussels",2));
+		cities.add(new CityDto("Paris", 3));
+		cities.add(new CityDto("Vienna", 4));
+		cities.add(new CityDto("Budapest", 5));
+		cities.add(new CityDto("Prague", 6));
 		
 	}
 
@@ -116,5 +120,40 @@ public class PersistanceData {
 	
 	public void cancelBooking(BookingDto booking) {
 		confirmedBookings.remove(booking);
+	}
+	
+	public List<BusDto> findBusesForCity(CityDto city) {
+		String busDestinationCity = city.cname;
+		List<BusDto> busesForCity = new ArrayList<BusDto>();
+		for(BusDto bus: buses) {
+			if(busDestinationCity.equals(bus.destination)) {
+				busesForCity.add(bus);
+			}
+		}
+		return busesForCity;
+	}
+	
+	public CityDto findCityByName(String cityName) {
+		CityDto c = null;
+		for(CityDto city: cities) {
+			if(city.cname.equals(cityName)) {
+				c = city;
+				break;
+			}
+		}
+		
+		return c;
+	}
+	
+	public CityDto findCityById(Integer id) {
+		CityDto c = null;
+		for(CityDto city: cities) {
+			if(city.cid.equals(id)) {
+				c = city;
+				break;
+			}
+		}
+		
+		return c;
 	}
 }
